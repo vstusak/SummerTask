@@ -11,6 +11,7 @@ namespace SummerTask
 {
     class Program
     {
+
         static void Main(string[] args)
         {
             var sourceFileName = Path.Combine(Environment.CurrentDirectory, "..\\..\\..\\Source Files\\Document1.xml");
