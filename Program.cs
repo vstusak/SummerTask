@@ -9,11 +9,24 @@ using System.Xml.Linq;
 
 namespace SummerTask
 {
-    class Program
+    internal class Program
     {
-
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
+            // settings
+            // nazvy souboru jako parametry - cesta z parametru
+            // validace souboru - existence souboru, validace obsahu
+            // tridy na praci se souborem - FileOpener => FileParser => FileWriter
+            // strategie na nacitani z disku, http
+            // Reader/Writer - provider
+            // factory na de/serializaci
+            // pridat logger
+            // testy -  prubezne
+            // pridat kontejnery
+            // rozdelit do projektu
+
+            //./app source output-target*
+
             var sourceFileName = Path.Combine(Environment.CurrentDirectory, "..\\..\\..\\Source Files\\Document1.xml");
             var targetFileName = Path.Combine(Environment.CurrentDirectory, "..\\..\\..\\Target Files\\Document1.json");
 
@@ -43,17 +56,5 @@ namespace SummerTask
             var sw = new StreamWriter(targetStream);
             sw.Write(serializedDoc);
         }
-    }
-
-    public interface IDocument
-    {
-        string Title { get; set; }
-        string Text { get; set; }
-    }
-
-    public class Document : IDocument
-    {
-        public string Title { get; set; }
-        public string Text { get; set; }
     }
 }
