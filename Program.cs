@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json.Schema;
 
 namespace SummerTask
 {
@@ -28,8 +23,9 @@ namespace SummerTask
 
             var sourceFileName = Path.Combine(Environment.CurrentDirectory, "Document1.xml");
             var targetFileName = Path.Combine(Environment.CurrentDirectory, "Output1.json");
-
-            new DocumentConverter().Execute(sourceFileName, targetFileName);
+            
+            var documentConverter = new DocumentConverter();
+            documentConverter.Convert(sourceFileName, targetFileName);
 
             //var targetStream = File.Open(targetFileName, FileMode.Create, FileAccess.Write);
             //var sw = new StreamWriter(targetStream);
