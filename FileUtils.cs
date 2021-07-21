@@ -9,11 +9,31 @@ namespace SummerTask
 {
     public class FileUtils
     {
-        public string OpenFile(string sourceFileName)
+        public string ReadFile(string sourceFileName)
         {
-            FileStream sourceStream = File.Open(sourceFileName, FileMode.Open); // use factory or strategy pattern to open different formats of document
-            var reader = new StreamReader(sourceStream);
-            return reader.ReadToEnd(); // load data with the use of buffer
+            ValidatePath(sourceFileName);
+
+            using (FileStream sourceStream = File.Open(sourceFileName, FileMode.Open))  // use factory or strategy pattern to open different formats of document
+            using (var reader = new StreamReader(sourceStream))
+            {
+                return reader.ReadToEnd(); // load data with the use of buffer
+            }
+
+        }
+
+        private void ValidatePath(string sourceFileName)
+        {
+            if (!File.Exists(sourceFileName))
+            {
+                throw new FileNotFoundException();
+            }
+        }
+
+        public void WriteFile(string targetFileName, string serializedDoc)
+        {
+            using (var targetStream = File.Open(targetFileName, FileMode.Create, FileAccess.Write))
+            using (var sw = new StreamWriter(targetStream))
+                sw.Write(serializedDoc);
         }
     }
 }

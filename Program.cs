@@ -13,6 +13,10 @@ namespace SummerTask
     {
         static void Main(string[] args)
         {
+            var fileUtils = new FileUtils();
+            var xmlParser = new XmlParser();
+            var jsonParser = new JsonParser();
+
             // Output for user could be shown
             // Single responsibility is not met - logic should be extracted to the separate methods
             var sourceFileName = Path.Combine(Environment.CurrentDirectory, "..\\..\\..\\Source Files\\Document1.xml"); //hard coded paths - should be passed with parameter
@@ -20,27 +24,25 @@ namespace SummerTask
 
             string input;
 
-            var fileUtils = new FileUtils();
             try
-            {
-                // priority no 1
-                // using should be used while using FileStream - file is not being closed in the current implementation
-                //resolve file source to load file (web server/local drive/network drive..)
+            {                
+                // resolve file source to load file (web server/local drive/network drive..)
                 // verify that file exists, validate its format
-                input = fileUtils.OpenFile(sourceFileName);
+                input = fileUtils.ReadFile(sourceFileName);
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message); //Specify type of exception, specify debug message. Do not create a new exception, but use original exception which includes the call stack.
             }
 
-            // TODO initialize XML parser and use it to get doc
-            var serializedDoc = JsonConvert.SerializeObject(doc); // save file to the correct path. Save file according to its target format - priority no 2
+            var document = xmlParser.Parse(input);
+            var serializedDoc = jsonParser.Serialize(document); // save file to the correct path. Save file according to its target format
 
-            var targetStream = File.Open(targetFileName, FileMode.Create, FileAccess.Write);
-            var sw = new StreamWriter(targetStream);
-            sw.Write(serializedDoc);
+            fileUtils.WriteFile(targetFileName, serializedDoc);
         }
+
+        
+
     }
 
     //interface should not be used in this case
