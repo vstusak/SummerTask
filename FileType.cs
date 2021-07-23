@@ -1,6 +1,6 @@
 ﻿namespace SummerTask
 {
-    public enum InputType
+    public enum FileType
     {
         Xml,
         Json,

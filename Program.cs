@@ -18,13 +18,17 @@ namespace SummerTask
             // testy -  prubezne
             // pridat kontejnery
             // rozdelit do projektu
+            // chceme vice output typu
 
             //./app source output-target*
 
             var sourceFileName = Path.Combine(Environment.CurrentDirectory, "Document1.xml");
             var targetFileName = Path.Combine(Environment.CurrentDirectory, "Output1.json");
-            
-            var documentConverter = new DocumentConverter();
+
+            var fileHelper = new FileHelper();
+            var parserFactory = new ParserFactory();
+            var serializerFactory = new SerializerFactory();
+            var documentConverter = new DocumentConverter(fileHelper,parserFactory,serializerFactory);
             documentConverter.Convert(sourceFileName, targetFileName);
 
             //var targetStream = File.Open(targetFileName, FileMode.Create, FileAccess.Write);

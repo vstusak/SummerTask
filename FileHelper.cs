@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace SummerTask
 {
-    public static class FileHelper
+    public class FileHelper
     {
-        public static InputType GetFileType(string sourceFileName)
+        public FileType GetFileType(string sourceFileName)
         {
             var extension = Path.GetExtension(sourceFileName);
             var clearExtension = extension.Replace(".", "");
 
-            if (Enum.TryParse(clearExtension, true, out InputType inputType))
+            if (Enum.TryParse(clearExtension, true, out FileType inputType))
             {
                 return inputType;
             }
@@ -22,13 +22,18 @@ namespace SummerTask
             throw new NotSupportedException($"Unsupported extension '{clearExtension}'");
         }
 
-        public static bool FileValidation(string fileName)
+        public bool FileValidation(string fileName)
         {
             return File.Exists(fileName);
         }
 
-        public static string OpenAsString(string fileName)
+        public string OpenAsString(string fileName)
         {
+            if (!FileValidation(fileName))
+            {
+                throw new FileNotFoundException($"Input file '{fileName}' not found.");
+            }
+
             try
             {
                 using (var sourceStream = File.Open(fileName, FileMode.Open))
@@ -39,6 +44,11 @@ namespace SummerTask
             {
                 throw new Exception(ex.Message);
             }
+        }
+
+        public void WriteFile(string targetFileName, string serializedDoc)
+        {
+            File.WriteAllText(targetFileName, serializedDoc);
         }
     }
 }
