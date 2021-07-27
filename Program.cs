@@ -13,34 +13,20 @@ namespace SummerTask
     {
         static void Main(string[] args)
         {
+            var parser = new XmlParser();
+            var serializer = new JsonSerializer();
+            var fileReader = new FileReader();
+            var fileWriter = new FileWriter();
+            var converter = new Converter(parser, serializer,fileReader,fileWriter);
+            //Create example files
+            //Finally: Load from args instead
             var sourceFileName = Path.Combine(Environment.CurrentDirectory, "..\\..\\..\\Source Files\\Document1.xml");
             var targetFileName = Path.Combine(Environment.CurrentDirectory, "..\\..\\..\\Target Files\\Document1.json");
 
-            string input;
 
-            try
-            {
-                FileStream sourceStream = File.Open(sourceFileName, FileMode.Open);
-                var reader = new StreamReader(sourceStream);
-                input = reader.ReadToEnd();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-
-            var xdoc = XDocument.Parse(input);
-            var doc = new Document
-            {
-                Title = xdoc.Root.Element("title").Value,
-                Text = xdoc.Root.Element("text").Value
-            };
-
-            var serializedDoc = JsonConvert.SerializeObject(doc);
-
-            var targetStream = File.Open(targetFileName, FileMode.Create, FileAccess.Write);
-            var sw = new StreamWriter(targetStream);
-            sw.Write(serializedDoc);
+            //Pick parser based on source file
+            //Pick serializer based on source file
+            converter.Convert(sourceFileName, targetFileName);
         }
     }
 
