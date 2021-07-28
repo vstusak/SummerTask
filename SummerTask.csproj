@@ -46,11 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileConverter.cs" />
     <Compile Include="FileUtils.cs" />
+    <Compile Include="IParser.cs" />
+    <Compile Include="IParsingStrategy.cs" />
     <Compile Include="JsonParser.cs" />
+    <Compile Include="NullParsingStrategy.cs" />
+    <Compile Include="Parser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XmlParser.cs" />
+    <Compile Include="XmlParsingStrategy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

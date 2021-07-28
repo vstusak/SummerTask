@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace SummerTask
 {
-    public class XmlParser
+    public class XmlParsingStrategy : IParsingStrategy
     {
         private const string Title = "title";
         private const string Text = "text";
