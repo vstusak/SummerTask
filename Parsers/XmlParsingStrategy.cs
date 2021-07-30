@@ -2,9 +2,9 @@
 
 namespace SummerTask
 {
-    public class XmlParser : IDocumentParser
+    public class XmlParsingStrategy : IParsingStrategy
     {
-        public Document ParseDocument(string input)
+        public Document Parse(string input)
         {
             var xmlDocument = XDocument.Parse(input);
             return new Document

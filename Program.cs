@@ -26,9 +26,9 @@ namespace SummerTask
             var targetFileName = Path.Combine(Environment.CurrentDirectory, "Output1.json");
 
             var fileHelper = new FileHelper();
-            var parserFactory = new ParserFactory();
             var serializerFactory = new SerializerFactory();
-            var documentConverter = new DocumentConverter(fileHelper,parserFactory,serializerFactory);
+            var parser = new Parser();
+            var documentConverter = new DocumentConverter(fileHelper,serializerFactory, parser);
             documentConverter.Convert(sourceFileName, targetFileName);
 
             //var targetStream = File.Open(targetFileName, FileMode.Create, FileAccess.Write);

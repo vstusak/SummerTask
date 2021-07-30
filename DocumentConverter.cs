@@ -1,16 +1,18 @@
-﻿namespace SummerTask
+﻿using System;
+
+namespace SummerTask
 {
     public class DocumentConverter : ParserFactory
     {
         private readonly FileHelper _fileHelper;
-        private readonly ParserFactory _parserFactory;
         private readonly SerializerFactory _serializerFactory;
+        private readonly IParser _parser;
 
-        public DocumentConverter(FileHelper fileHelper, ParserFactory parserFactory, SerializerFactory serializerFactory)
+        public DocumentConverter(FileHelper fileHelper, SerializerFactory serializerFactory, IParser parser)
         {
             _fileHelper = fileHelper;
-            _parserFactory = parserFactory;
             _serializerFactory = serializerFactory;
+            _parser = parser;
         }
 
         public void Convert(string sourceFileName, string targetFileName)
@@ -21,16 +23,33 @@
                 OutputType = _fileHelper.GetFileType(targetFileName)
             };
 
-            //switch input type -> select xml xmlParser or json xmlParser
-            var parser = _parserFactory.GetParser(settings.InputType);
+            _parser.SetStrategy(GetParsingStrategy(settings.InputType));
 
             var inputFileContent = _fileHelper.OpenAsString(sourceFileName);
-            var doc = parser.ParseDocument(inputFileContent);
+            var doc = _parser.ParseDocument(inputFileContent);
 
             var serializer = _serializerFactory.GetSerializer(settings.OutputType);
             var serializedDoc = serializer.Serialize(doc);
 
             _fileHelper.WriteFile(targetFileName, serializedDoc);
+        }
+
+        private IParsingStrategy GetParsingStrategy(FileType fileType)
+        {
+            switch (fileType)
+            {
+                case FileType.Xml:
+                    return new XmlParsingStrategy();
+                    
+                case FileType.Json:
+                    return new JsonParsingStrategy();
+                    
+                case FileType.Html:
+                    throw new NotImplementedException();
+                    
+                default:
+                    throw new Exception(); //TBD Incompatible file type
+            }
         }
     }
 }

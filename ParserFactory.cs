@@ -7,14 +7,14 @@ namespace SummerTask
 
 
 
-        public IDocumentParser GetParser(FileType inputType)
+        public IParsingStrategy GetParser(FileType inputType)
         {
             switch (inputType)
             {
                 case FileType.Xml:
-                    return new XmlParser();
+                    return new XmlParsingStrategy();
                 case FileType.Json:
-                    throw new NotImplementedException();
+                    return new JsonParsingStrategy();
                 case FileType.Html:
                     throw new NotImplementedException();
                 default:
