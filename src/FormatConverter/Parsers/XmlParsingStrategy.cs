@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace SummerTask
+namespace FormatConverter.Parsers
 {
     public class XmlParsingStrategy : IParsingStrategy
     {

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FormatConverter.Parsers;
 
-namespace SummerTask
+namespace FormatConverter
 {
-    class FileConverter
+    public class FileConverter
     {
         private readonly FileUtils _fileUtils;
         private readonly IParser _parser;

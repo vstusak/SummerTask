@@ -1,11 +1,12 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using FormatConverter;
+using FormatConverter.Parsers;
 
 namespace SummerTask
 {
@@ -28,9 +29,5 @@ namespace SummerTask
         }
     }
 
-    public class Document
-    {
-        public string Title { get; set; }
-        public string Text { get; set; }
-    }
+
 }

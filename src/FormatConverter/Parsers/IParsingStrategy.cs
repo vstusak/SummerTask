@@ -1,4 +1,4 @@
-﻿namespace SummerTask
+﻿namespace FormatConverter.Parsers
 {
     public interface IParsingStrategy
     {

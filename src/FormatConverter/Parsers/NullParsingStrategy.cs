@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SummerTask
+namespace FormatConverter.Parsers
 {
     public class NullParsingStrategy : IParsingStrategy
     {
