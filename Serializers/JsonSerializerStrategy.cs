@@ -1,13 +1,8 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SummerTask
+namespace SummerTask.Serializers
 {
-    public class JsonSerializer : ISerializer
+    public class JsonSerializerStrategy : ISerializeStrategy
     {
         public string Serialize(Document document)
         {

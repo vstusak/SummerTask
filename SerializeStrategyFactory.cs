@@ -1,21 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SummerTask.Serializers;
 
 namespace SummerTask
 {
-    public class SerializerFactory
+    public class SerializeStrategyFactory
     {
-        public ISerializer GetSerializer(FileType inputType)
+        public ISerializeStrategy GetStrategy(FileType inputType)
         {
             switch (inputType)
             {
                 case FileType.Xml:
-                    throw new NotImplementedException();
+                    return new XmlSerializerStrategy();
+
                 case FileType.Json:
-                    return new JsonSerializer();
+                    return new JsonSerializerStrategy();
+
                 case FileType.Html:
                     throw new NotImplementedException();
                 default:

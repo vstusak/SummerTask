@@ -1,18 +1,19 @@
 ﻿using System;
+using SummerTask.Serializers;
 
 namespace SummerTask
 {
     public class DocumentConverter : ParserFactory
     {
         private readonly FileHelper _fileHelper;
-        private readonly SerializerFactory _serializerFactory;
         private readonly IParser _parser;
+        private readonly ISerializer _serializer;
 
-        public DocumentConverter(FileHelper fileHelper, SerializerFactory serializerFactory, IParser parser)
+        public DocumentConverter(FileHelper fileHelper, IParser parser, ISerializer serializer)
         {
             _fileHelper = fileHelper;
-            _serializerFactory = serializerFactory;
             _parser = parser;
+            _serializer = serializer;
         }
 
         public void Convert(string sourceFileName, string targetFileName)
@@ -28,8 +29,9 @@ namespace SummerTask
             var inputFileContent = _fileHelper.OpenAsString(sourceFileName);
             var doc = _parser.ParseDocument(inputFileContent);
 
-            var serializer = _serializerFactory.GetSerializer(settings.OutputType);
-            var serializedDoc = serializer.Serialize(doc);
+            //var serializer = _serializerFactory.GetStrategy(settings.OutputType);
+            _serializer.SetStrategy(new SerializeStrategyFactory().GetStrategy(settings.OutputType));
+            var serializedDoc = _serializer.SerializeDocument(doc);
 
             _fileHelper.WriteFile(targetFileName, serializedDoc);
         }
@@ -40,13 +42,13 @@ namespace SummerTask
             {
                 case FileType.Xml:
                     return new XmlParsingStrategy();
-                    
+
                 case FileType.Json:
                     return new JsonParsingStrategy();
-                    
+
                 case FileType.Html:
                     throw new NotImplementedException();
-                    
+
                 default:
                     throw new Exception(); //TBD Incompatible file type
             }

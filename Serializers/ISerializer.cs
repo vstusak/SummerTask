@@ -1,7 +1,9 @@
-﻿namespace SummerTask
+﻿namespace SummerTask.Serializers
 {
     public interface ISerializer
     {
-        string Serialize(Document document);
+        string SerializeDocument(Document document);
+
+        void SetStrategy(ISerializeStrategy getSerializer);
     }
 }
