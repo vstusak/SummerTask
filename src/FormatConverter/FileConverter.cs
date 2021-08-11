@@ -11,25 +11,25 @@ namespace FormatConverter
     {
         private readonly FileUtils _fileUtils;
         private readonly IParser _parser;
-        private readonly JsonParser _jsonParser;
+        private readonly ParsingStrategyFactory _parsingStrategyFactory;
 
-        public FileConverter(FileUtils fileUtils, IParser parser, JsonParser jsonParser)
+        public FileConverter(FileUtils fileUtils, IParser parser, ParsingStrategyFactory parsingStrategyFactory)
         {
             _fileUtils = fileUtils;
             _parser = parser;
-            _jsonParser = jsonParser;
+            _parsingStrategyFactory = parsingStrategyFactory;
         }
 
         public void Execute(string sourceFileName, string targetFileName)
         {
             var input = _fileUtils.ReadFile(sourceFileName);
 
-            //var document = _xmlParser.Parse(input);
-            //TODO set parsing strategy
+            var parsingStrategy = _parsingStrategyFactory.GetParsingStrategy(sourceFileName);
+            _parser.SetParsingStrategy(parsingStrategy);
             var document = _parser.Parse(input);
-            var serializedDoc = _jsonParser.Serialize(document); // save file to the correct path. Save file according to its target format
+            //var serializedDoc = _parser.Serialize(document); // save file to the correct path. Save file according to its target format
 
-            _fileUtils.WriteFile(targetFileName, serializedDoc);
+            //_fileUtils.WriteFile(targetFileName, serializedDoc);
         }
     }
 }

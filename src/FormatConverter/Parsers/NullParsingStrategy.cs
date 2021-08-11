@@ -12,5 +12,7 @@ namespace FormatConverter.Parsers
         {
             throw new Exception("Parsing strategy has not been set.");
         }
+
+        public string Format => "default";
     }
 }

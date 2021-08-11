@@ -15,9 +15,9 @@ namespace SummerTask
         static void Main(string[] args)
         {
             var fileUtils = new FileUtils();
-            var jsonParser = new JsonParser();
+            var parsingStrategyFactory = new ParsingStrategyFactory();
             var parser = new Parser();
-            var converter = new FileConverter(fileUtils, parser, jsonParser);
+            var converter = new FileConverter(fileUtils, parser, parsingStrategyFactory);
             // Output for user could be shown
             // Single responsibility is not met - logic should be extracted to the separate methods
             var sourceFileName = Path.Combine(Environment.CurrentDirectory, "..\\..\\..\\Source Files\\Document1.xml"); //hard coded paths - should be passed with parameter

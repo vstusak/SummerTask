@@ -21,5 +21,7 @@ namespace FormatConverter.Parsers
                 Text = xmlDocument.Root.Element(Text).Value
             };
         }
+
+        public string Format => "xml";
     }
 }

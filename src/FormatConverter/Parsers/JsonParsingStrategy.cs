@@ -7,11 +7,18 @@ using System.Threading.Tasks;
 
 namespace FormatConverter.Parsers
 {
-    public class JsonParser
+    public class JsonParsingStrategy : IParsingStrategy
     {
         public string Serialize(Document document)
         {
             return JsonConvert.SerializeObject(document);
         }
+
+        public Document Parse(string input)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Format => "json";
     }
 }
