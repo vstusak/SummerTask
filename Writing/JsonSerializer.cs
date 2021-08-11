@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SummerTask
 {
-    public class JsonSerializer
+    public class JsonSerializer : ISerializer
     {
         public string Serialize(Document doc)
         {

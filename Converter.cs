@@ -1,18 +1,25 @@
-﻿namespace SummerTask
+﻿using SummerTask.Writing;
+using System;
+using System.IO;
+
+
+namespace SummerTask
 {
-    public class Converter
+    public class Converter 
     {
         private IParser _parser;
-        private readonly JsonSerializer _serializer;
+        private ISerializer _serializer;
         private readonly FileReader _fileReader;
         private readonly FileWriter _fileWriter;
         private readonly ParserFactory _parserFactory;
-        public Converter(JsonSerializer serializer, FileReader fileReader, FileWriter fileWriter, ParserFactory parserFactory)
+        private readonly SerializerFactory _serializerFactory;
+        public Converter(FileReader fileReader, FileWriter fileWriter, ParserFactory parserFactory, SerializerFactory serializerFactory)
         {
-            _serializer = serializer;
+            //_serializer = serializer;
             _fileReader = fileReader;
             _fileWriter = fileWriter;
             _parserFactory = parserFactory;
+            _serializerFactory = serializerFactory;
         }
 
         public void Convert(string sourceFileName, string targetFileName)
@@ -23,6 +30,8 @@
 
             Document doc = _parser.Parse(input);
 
+            
+            _serializer = _serializerFactory.LoadSerializer(targetFileName);
             string serializedDoc = _serializer.Serialize(doc);
 
             _fileWriter.Write(targetFileName, serializedDoc);

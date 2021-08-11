@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SummerTask.Writing;
+using System;
 using System.IO;
 
 namespace SummerTask
@@ -11,8 +12,10 @@ namespace SummerTask
             var fileReader = new FileReader();
             var fileWriter = new FileWriter();
             var parserFactory = new ParserFactory();
+            var xmlSummerSerializer = new XmlSummerSerializer();
+            var serializerFactory = new SerializerFactory(xmlSummerSerializer, serializer);
 
-            var converter = new Converter(serializer,fileReader,fileWriter, parserFactory);
+            var converter = new Converter(fileReader,fileWriter, parserFactory, serializerFactory);
             //Create example files
             //Finally: Load from args instead
             var sourceFileName = Path.Combine(Environment.CurrentDirectory, "..\\..\\..\\Source Files\\Document1.xml");
