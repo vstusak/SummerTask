@@ -4,6 +4,8 @@ namespace SummerTask.Serializers
 {
     public class XmlSerializerStrategy : ISerializeStrategy
     {
+        public FileType FileType => FileType.Xml;
+
         public string Serialize(Document document)
         {
             var xmlDocument = new XDocument(

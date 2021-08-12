@@ -8,12 +8,18 @@ namespace SummerTask
         private readonly FileHelper _fileHelper;
         private readonly IParser _parser;
         private readonly ISerializer _serializer;
+        private readonly SerializeStrategyFactory _serializeStrategyFactory;
 
-        public DocumentConverter(FileHelper fileHelper, IParser parser, ISerializer serializer)
+        public DocumentConverter(
+            FileHelper fileHelper,
+            IParser parser,
+            ISerializer serializer,
+            SerializeStrategyFactory serializeStrategyFactory)
         {
             _fileHelper = fileHelper;
             _parser = parser;
             _serializer = serializer;
+            _serializeStrategyFactory = serializeStrategyFactory;
         }
 
         public void Convert(string sourceFileName, string targetFileName)
@@ -29,8 +35,8 @@ namespace SummerTask
             var inputFileContent = _fileHelper.OpenAsString(sourceFileName);
             var doc = _parser.ParseDocument(inputFileContent);
 
-            //var serializer = _serializerFactory.GetStrategy(settings.OutputType);
-            _serializer.SetStrategy(new SerializeStrategyFactory().GetStrategy(settings.OutputType));
+            var serializeStrategy = _serializeStrategyFactory.GetStrategy(settings.OutputType);
+            _serializer.SetStrategy(serializeStrategy);
             var serializedDoc = _serializer.SerializeDocument(doc);
 
             _fileHelper.WriteFile(targetFileName, serializedDoc);

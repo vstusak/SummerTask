@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using SummerTask.Parsers;
 using SummerTask.Serializers;
@@ -31,7 +32,14 @@ namespace SummerTask
             //var serializerFactory = new SerializeStrategyFactory();
             var serializer = new Serializer();
             var parser = new Parser();
-            var documentConverter = new DocumentConverter(fileHelper, parser, serializer);
+            var serializeStrategies = new List<ISerializeStrategy>
+            {
+                new XmlSerializerStrategy(),
+                new JsonSerializerStrategy(),
+                new DefaultSerializeStrategy()
+            };
+            var serializeStrategyFactory = new SerializeStrategyFactory(serializeStrategies);
+            var documentConverter = new DocumentConverter(fileHelper, parser, serializer, serializeStrategyFactory);
             documentConverter.Convert(sourceFileName, targetFileName);
 
             //var targetStream = File.Open(targetFileName, FileMode.Create, FileAccess.Write);
