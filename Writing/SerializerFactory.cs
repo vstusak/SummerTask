@@ -4,7 +4,7 @@ using System.IO;
 
 namespace SummerTask
 {
-    public class SerializerFactory 
+    public class SerializerFactory : ISerializerFactory
     {
         private readonly XmlSummerSerializer _xmlSummerSerializer;
         private readonly JsonSerializer _jsonSerializer;
@@ -22,7 +22,7 @@ namespace SummerTask
             switch (fileExtension)
             {
                 case "xml":
-                    return _xmlSummerSerializer;                  
+                    return _xmlSummerSerializer;
                 case "json":
                     return _jsonSerializer;
                 default:

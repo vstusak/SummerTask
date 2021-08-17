@@ -9,11 +9,11 @@ namespace SummerTask
     {
         private IParser _parser;
         private ISerializer _serializer;
-        private readonly FileReader _fileReader;
+        private readonly IFileReader _fileReader;
         private readonly FileWriter _fileWriter;
         private readonly ParserFactory _parserFactory;
-        private readonly SerializerFactory _serializerFactory;
-        public Converter(FileReader fileReader, FileWriter fileWriter, ParserFactory parserFactory, SerializerFactory serializerFactory)
+        private readonly ISerializerFactory _serializerFactory;
+        public Converter(IFileReader fileReader, FileWriter fileWriter, ParserFactory parserFactory, ISerializerFactory serializerFactory)
         {
             //_serializer = serializer;
             _fileReader = fileReader;

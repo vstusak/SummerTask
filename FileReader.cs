@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SummerTask
 {
-    public class FileReader
+    public class FileReader : IFileReader
     {
         public string Read(string sourceFileName)
         {
