@@ -52,11 +52,14 @@
     <Compile Include="FileWriter.cs" />
     <Compile Include="Parsing\IParser.cs" />
     <Compile Include="Parsing\JsonParser.cs" />
-    <Compile Include="JsonSerializer.cs" />
     <Compile Include="Parsing\ParserFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Parsing\XmlParser.cs" />
+    <Compile Include="Writing\ISerializer.cs" />
+    <Compile Include="Writing\JsonSerializer.cs" />
+    <Compile Include="Writing\SerializerFactory.cs" />
+    <Compile Include="Writing\XmlSummerSerializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
