@@ -50,8 +50,9 @@
     <Compile Include="DocumentConverter.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Document\IDocument.cs" />
+    <Compile Include="Helpers\IFileHelper.cs" />
+    <Compile Include="ISerializeStrategyFactory.cs" />
     <Compile Include="Parsers\DefaultParsingStrategy.cs" />
-    <Compile Include="Parsers\IDocumentParser.cs" />
     <Compile Include="FileType.cs" />
     <Compile Include="Parsers\IParsingStrategy.cs" />
     <Compile Include="Parsers\IParser.cs" />

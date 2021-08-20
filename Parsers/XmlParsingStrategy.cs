@@ -1,6 +1,6 @@
 ﻿using System.Xml.Linq;
 
-namespace SummerTask
+namespace SummerTask.Parsers
 {
     public class XmlParsingStrategy : IParsingStrategy
     {

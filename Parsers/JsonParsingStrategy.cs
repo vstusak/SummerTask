@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace SummerTask
+namespace SummerTask.Parsers
 {
     public class JsonParsingStrategy : IParsingStrategy
     {

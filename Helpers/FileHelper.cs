@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SummerTask
 {
-    public class FileHelper
+    public class FileHelper : IFileHelper
     {
         public FileType GetFileType(string sourceFileName)
         {

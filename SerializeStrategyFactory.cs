@@ -5,7 +5,7 @@ using SummerTask.Serializers;
 
 namespace SummerTask
 {
-    public class SerializeStrategyFactory
+    public class SerializeStrategyFactory : ISerializeStrategyFactory
     {
         //private readonly XmlSerializerStrategy _xmlSerializerStrategy;
         //private readonly JsonSerializerStrategy _jsonSerializerStrategy;

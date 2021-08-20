@@ -1,20 +1,21 @@
 ﻿using System;
+using SummerTask.Parsers;
 using SummerTask.Serializers;
 
 namespace SummerTask
 {
     public class DocumentConverter : ParserFactory
     {
-        private readonly FileHelper _fileHelper;
+        private readonly IFileHelper _fileHelper;
         private readonly IParser _parser;
         private readonly ISerializer _serializer;
-        private readonly SerializeStrategyFactory _serializeStrategyFactory;
+        private readonly ISerializeStrategyFactory _serializeStrategyFactory;
 
         public DocumentConverter(
-            FileHelper fileHelper,
+            IFileHelper fileHelper,
             IParser parser,
             ISerializer serializer,
-            SerializeStrategyFactory serializeStrategyFactory)
+            ISerializeStrategyFactory serializeStrategyFactory)
         {
             _fileHelper = fileHelper;
             _parser = parser;
