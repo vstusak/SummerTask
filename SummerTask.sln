@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SummerTask", "src\SummerTas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormatConverter", "src\FormatConverter\FormatConverter.csproj", "{84E5C2D7-4323-426D-B13D-BC92C3D4EC4B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormatConverter.Tests", "FormatConverter.Tests\FormatConverter.Tests.csproj", "{A62A5982-1264-47FD-AF70-77C1CAC882AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{84E5C2D7-4323-426D-B13D-BC92C3D4EC4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84E5C2D7-4323-426D-B13D-BC92C3D4EC4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84E5C2D7-4323-426D-B13D-BC92C3D4EC4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A62A5982-1264-47FD-AF70-77C1CAC882AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A62A5982-1264-47FD-AF70-77C1CAC882AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A62A5982-1264-47FD-AF70-77C1CAC882AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A62A5982-1264-47FD-AF70-77C1CAC882AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

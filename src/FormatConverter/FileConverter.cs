@@ -11,9 +11,9 @@ namespace FormatConverter
     {
         private readonly FileUtils _fileUtils;
         private readonly IParser _parser;
-        private readonly ParsingStrategyFactory _parsingStrategyFactory;
+        private readonly IParsingStrategyFactory _parsingStrategyFactory;
 
-        public FileConverter(FileUtils fileUtils, IParser parser, ParsingStrategyFactory parsingStrategyFactory)
+        public FileConverter(FileUtils fileUtils, IParser parser, IParsingStrategyFactory parsingStrategyFactory)
         {
             _fileUtils = fileUtils;
             _parser = parser;

@@ -50,6 +50,7 @@
     <Compile Include="FileUtils.cs" />
     <Compile Include="Parsers\IParser.cs" />
     <Compile Include="Parsers\IParsingStrategy.cs" />
+    <Compile Include="Parsers\IParsingStrategyFactory.cs" />
     <Compile Include="Parsers\JsonParsingStrategy.cs" />
     <Compile Include="Parsers\NullParsingStrategy.cs" />
     <Compile Include="Parsers\Parser.cs" />

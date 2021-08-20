@@ -15,7 +15,10 @@ namespace SummerTask
         static void Main(string[] args)
         {
             var fileUtils = new FileUtils();
-            var parsingStrategyFactory = new ParsingStrategyFactory();
+            var parsingStrategies = new List<IParsingStrategy>();
+            parsingStrategies.Add(new JsonParsingStrategy());
+            parsingStrategies.Add(new XmlParsingStrategy());
+            var parsingStrategyFactory = new ParsingStrategyFactory(parsingStrategies);
             var parser = new Parser();
             var converter = new FileConverter(fileUtils, parser, parsingStrategyFactory);
             // Output for user could be shown

@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace FormatConverter.Parsers
 {
-    public class ParsingStrategyFactory
+    public class ParsingStrategyFactory : IParsingStrategyFactory
     {
         private readonly IEnumerable<IParsingStrategy> _parsingStrategies;
 
