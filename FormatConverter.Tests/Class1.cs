@@ -27,7 +27,6 @@ namespace FormatConverter.Tests
             unitUnderTest.Execute("", "");
 
             //Assert
-
         }
     }
 }
