@@ -9,11 +9,11 @@ namespace FormatConverter
 {
     public class FileConverter
     {
-        private readonly FileUtils _fileUtils;
+        private readonly IFileUtils _fileUtils;
         private readonly IParser _parser;
         private readonly IParsingStrategyFactory _parsingStrategyFactory;
 
-        public FileConverter(FileUtils fileUtils, IParser parser, IParsingStrategyFactory parsingStrategyFactory)
+        public FileConverter(IFileUtils fileUtils, IParser parser, IParsingStrategyFactory parsingStrategyFactory)
         {
             _fileUtils = fileUtils;
             _parser = parser;

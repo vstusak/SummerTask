@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FormatConverter
 {
-    public class FileUtils
+    public class FileUtils : IFileUtils
     {
         public string ReadFile(string sourceFileName)
         {
