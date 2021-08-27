@@ -2,7 +2,7 @@
 
 namespace SummerTask.Serializers
 {
-    public class XmlSerializerStrategy : ISerializeStrategy
+    public class XmlSerializeStrategy : ISerializeStrategy
     {
         public FileType FileType => FileType.Xml;
 
