@@ -21,7 +21,7 @@ namespace SummerTask
         //}
 
         public SerializeStrategyFactory(
-            IEnumerable<ISerializeStrategy> serializeStrategies)
+            IList<ISerializeStrategy> serializeStrategies)
         {
             _serializeStrategies = serializeStrategies;
         }

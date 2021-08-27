@@ -4,7 +4,7 @@ using SummerTask.Serializers;
 
 namespace SummerTask
 {
-    public class DocumentConverter : ParserFactory
+    public class DocumentConverter : IDocumentConverter
     {
         private readonly IFileHelper _fileHelper;
         private readonly IParser _parser;
