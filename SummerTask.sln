@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SummerTask", "SummerTask.csproj", "{53AA7028-6036-444F-93F6-A7A634FE6D99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SummerTask.Tests", "..\SummerTask.Tests\SummerTask.Tests.csproj", "{7EEC3868-7425-43F0-8C3E-1011A4306CC9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SummerTask.Tests", "SummerTask.Tests\SummerTask.Tests.csproj", "{7EEC3868-7425-43F0-8C3E-1011A4306CC9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
