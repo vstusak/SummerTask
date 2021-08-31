@@ -10,10 +10,10 @@ namespace SummerTask
         private IParser _parser;
         private ISerializer _serializer;
         private readonly IFileReader _fileReader;
-        private readonly FileWriter _fileWriter;
-        private readonly ParserFactory _parserFactory;
+        private readonly IFileWriter _fileWriter;
+        private readonly IParserFactory _parserFactory;
         private readonly ISerializerFactory _serializerFactory;
-        public Converter(IFileReader fileReader, FileWriter fileWriter, ParserFactory parserFactory, ISerializerFactory serializerFactory)
+        public Converter(IFileReader fileReader, IFileWriter fileWriter, IParserFactory parserFactory, ISerializerFactory serializerFactory)
         {
             //_serializer = serializer;
             _fileReader = fileReader;
@@ -29,7 +29,6 @@ namespace SummerTask
             _parser = _parserFactory.LoadParser(sourceFileName);
 
             Document doc = _parser.Parse(input);
-
             
             _serializer = _serializerFactory.LoadSerializer(targetFileName);
             string serializedDoc = _serializer.Serialize(doc);

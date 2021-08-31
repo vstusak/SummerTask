@@ -51,7 +51,9 @@
     <Compile Include="FileReader.cs" />
     <Compile Include="FileWriter.cs" />
     <Compile Include="IFileReader.cs" />
+    <Compile Include="IFileWriter.cs" />
     <Compile Include="Parsing\IParser.cs" />
+    <Compile Include="Parsing\IParserFactory.cs" />
     <Compile Include="Parsing\JsonParser.cs" />
     <Compile Include="Parsing\ParserFactory.cs" />
     <Compile Include="Program.cs" />

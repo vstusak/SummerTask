@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SummerTask
 {
-    public class FileWriter
+    public class FileWriter : IFileWriter
     {
         public void Write(string targetFileName, string serializedDoc)
         {

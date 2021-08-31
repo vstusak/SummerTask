@@ -22,8 +22,12 @@ namespace SummerTask.Tests
             var _mockFileReader = MockRepository.Create<IFileReader>();
             _mockFileReader.Setup(fr => fr.Read(It.IsAny<string>())).Returns(XmlInString);
 
-            var _mockFileWriter = MockRepository.Create<FileWriter>();
-            var _mockParserFactory = MockRepository.Create<ParserFactory>();
+            var _mockFileWriter = MockRepository.Create<IFileWriter>();
+            _mockFileWriter.Setup(fw => fw.Write(It.IsAny<string>(), It.IsAny<string>())).Verifiable();
+
+            var _mockParserFactory = MockRepository.Create<IParserFactory>();
+            _mockParserFactory.Setup(pf => pf.LoadParser(It.IsAny<string>())).Returns(new XmlParser());
+
             var _mockSerializerFactory = MockRepository.Create<ISerializerFactory>();
             _mockSerializerFactory.Setup(mp => mp.LoadSerializer(It.IsAny<string>())).Returns(new JsonSerializer());
 
@@ -36,6 +40,8 @@ namespace SummerTask.Tests
             unitUnderTest.Convert(input, output);
 
             //Assert
+            _mockFileWriter.Verify(fw=>fw.Write(It.IsAny<string>(), It.IsAny<string>()),Times.Once);
+
             //var result = File.ReadAllText(output);
             //Assert.AreEqual(JsonInString, result);
         }

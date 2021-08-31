@@ -3,7 +3,7 @@ using System.IO;
 
 namespace SummerTask
 {
-    public class ParserFactory
+    public class ParserFactory : IParserFactory
     {
         public IParser LoadParser(string sourceFileName)
         {
