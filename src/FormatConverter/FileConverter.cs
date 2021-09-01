@@ -7,7 +7,7 @@ using FormatConverter.Parsers;
 
 namespace FormatConverter
 {
-    public class FileConverter
+    public class FileConverter : IFileConverter
     {
         private readonly IFileUtils _fileUtils;
         private readonly IParser _parser;
