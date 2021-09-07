@@ -5,7 +5,7 @@ using System.IO;
 
 namespace SummerTask
 {
-    public class Converter 
+    public class Converter : IConverter
     {
         private IParser _parser;
         private ISerializer _serializer;
@@ -13,6 +13,7 @@ namespace SummerTask
         private readonly IFileWriter _fileWriter;
         private readonly IParserFactory _parserFactory;
         private readonly ISerializerFactory _serializerFactory;
+
         public Converter(IFileReader fileReader, IFileWriter fileWriter, IParserFactory parserFactory, ISerializerFactory serializerFactory)
         {
             //_serializer = serializer;
@@ -29,7 +30,7 @@ namespace SummerTask
             _parser = _parserFactory.LoadParser(sourceFileName);
 
             Document doc = _parser.Parse(input);
-            
+
             _serializer = _serializerFactory.LoadSerializer(targetFileName);
             string serializedDoc = _serializer.Serialize(doc);
 

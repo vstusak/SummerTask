@@ -1,4 +1,5 @@
-﻿using SummerTask.Writing;
+﻿using Castle.Windsor;
+using SummerTask.Writing;
 using System;
 using System.IO;
 
@@ -8,14 +9,11 @@ namespace SummerTask
     {
         static void Main(string[] args)
         {
-            var serializer = new JsonSerializer();
-            var fileReader = new FileReader();
-            var fileWriter = new FileWriter();
-            var parserFactory = new ParserFactory();
-            var xmlSummerSerializer = new XmlSummerSerializer();
-            var serializerFactory = new SerializerFactory(xmlSummerSerializer, serializer);
 
-            var converter = new Converter(fileReader,fileWriter, parserFactory, serializerFactory);
+            var container = new WindsorContainer();
+            container.Install(new SummerTaskInstaller());
+            var converter = container.Resolve<IConverter>();
+
             //Create example files
             //Finally: Load from args instead
             var sourceFileName = Path.Combine(Environment.CurrentDirectory, "..\\..\\..\\Source Files\\Document1.xml");

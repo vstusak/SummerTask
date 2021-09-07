@@ -12,7 +12,7 @@ namespace SummerTask.Writing
         public string Serialize(Document doc)
         {
             var xmlDocument = new XDocument(
-                    new XElement("root", 
+                    new XElement("root",
                         new XElement("title", doc.Title),
                         new XElement("text", doc.Text)
                        )
