@@ -54,7 +54,7 @@ namespace SummerTask
                     return new JsonParsingStrategy();
 
                 case FileType.Html:
-                    throw new NotImplementedException();
+                    return new HtmlParsingStrategy();
 
                 default:
                     throw new Exception(); //TBD Incompatible file type

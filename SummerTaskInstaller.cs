@@ -22,8 +22,9 @@ namespace SummerTask
             container.Register(Component.For<ISerializer>().ImplementedBy<Serializer>().LifestyleTransient());
             container.Register(Component.For<ISerializeStrategyFactory>().ImplementedBy<SerializeStrategyFactory>());
             container.Register(Component.For<ISerializeStrategy>().ImplementedBy<XmlSerializeStrategy>().Named(nameof(XmlSerializeStrategy)));
-            container.Register(Component.For<ISerializeStrategy>().ImplementedBy<JsonSerializeStrategy>().Named(nameof(JsonParsingStrategy)));
-            container.Register(Component.For<ISerializeStrategy>().ImplementedBy<DefaultSerializeStrategy>().Named(nameof(DefaultSerializeStrategy)));
+            container.Register(Component.For<ISerializeStrategy>().ImplementedBy<JsonSerializeStrategy>().Named(nameof(JsonSerializeStrategy)));
+            container.Register(Component.For<ISerializeStrategy>().ImplementedBy<HtmlSerializerStrategy>().Named(nameof(HtmlSerializerStrategy)));
+            container.Register(Component.For<ISerializeStrategy>().ImplementedBy<DefaultSerializeStrategy>().Named(nameof(DefaultSerializeStrategy))); 
         }
     }
 }
