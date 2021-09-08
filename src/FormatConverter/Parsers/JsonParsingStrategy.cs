@@ -16,7 +16,7 @@ namespace FormatConverter.Parsers
 
         public Document Parse(string input)
         {
-            throw new NotImplementedException();
+            return JsonConvert.DeserializeObject<Document>(input);
         }
 
         public string Format => "json";

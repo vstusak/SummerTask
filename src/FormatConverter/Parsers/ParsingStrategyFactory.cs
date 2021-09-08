@@ -8,9 +8,9 @@ namespace FormatConverter.Parsers
 {
     public class ParsingStrategyFactory : IParsingStrategyFactory
     {
-        private readonly IEnumerable<IParsingStrategy> _parsingStrategies;
+        private readonly IList<IParsingStrategy> _parsingStrategies;
 
-        public ParsingStrategyFactory(IEnumerable<IParsingStrategy> parsingStrategies)
+        public ParsingStrategyFactory(IList<IParsingStrategy> parsingStrategies)
         {
             _parsingStrategies = parsingStrategies;
         }
